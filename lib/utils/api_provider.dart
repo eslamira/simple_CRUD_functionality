@@ -150,7 +150,7 @@ class ApiProvider {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return UserModel.parser(user, json.decode(response.body));
     } else {
-      throw response.statusCode;
+      throw response.body;
     }
   }
 

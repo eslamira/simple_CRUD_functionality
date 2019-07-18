@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:elrizk_task/models/user_model.dart';
+import 'package:elrizk_task/ui/auth/login_screen.dart';
 import 'package:elrizk_task/utils/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
@@ -31,7 +35,17 @@ class _EditProfileState extends State<EditProfile> {
         Navigator.of(context).pop();
         Navigator.of(context).pop();
       } catch (e) {
-        _error = '${e.toString()}';
+        Map m = json.decode(e.toString());
+        if (m['error']['message'] == 'TOKEN_EXPIRED') {
+          _error = 'Session expired log in again';
+          Timer(
+              Duration(seconds: 3),
+              () => Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen()),
+                  (route) => false));
+        } else
+          _error = '${m['error']['message']}';
         if (mounted) setState(() {});
         Navigator.of(context).pop();
       }

@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                         child: Text(
                           'Hi, \nWelcome ${_userModel.name}'
-                          '\n\n\nYou can view and edit your profile from the button Above.',
+                          '\n\n\nYou can view and edit your profile by clicking on you account type Above.',
                           textScaleFactor: 1.0,
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.subtitle,

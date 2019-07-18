@@ -75,8 +75,7 @@ class ApiProvider {
   }
 
   /// Update user's e-mail
-  /// returns a [FirebaseUser] if successful
-  Future<FirebaseUser> updateUserEmail(String token, String email) async {
+  Future<void> updateUserEmail(String token, String email) async {
     var data = json.encode({
       "idToken": "$token",
       "email": "$email",
@@ -89,15 +88,13 @@ class ApiProvider {
     );
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      return FirebaseUser.parser(json.decode(response.body));
     } else {
-      throw response.statusCode;
+      throw response.body;
     }
   }
 
   /// Update user's password
-  /// returns a [FirebaseUser] if successful
-  Future<FirebaseUser> updateUserPass(String token, String pass) async {
+  Future<void> updateUserPass(String token, String pass) async {
     var data = json.encode({
       "idToken": "$token",
       "password": "$pass",
@@ -109,9 +106,7 @@ class ApiProvider {
       body: data,
     );
 
-    print(response.body);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      return FirebaseUser.parser(json.decode(response.body));
     } else {
       throw response.statusCode;
     }
@@ -167,11 +162,10 @@ class ApiProvider {
         body: data);
 
     print(response.body);
-
     if (response.statusCode == 200 || response.statusCode == 201) {
       return UserModel.parser(user, json.decode(response.body));
     } else {
-      throw response.statusCode;
+      throw response.body;
     }
   }
 

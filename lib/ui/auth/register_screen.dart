@@ -69,13 +69,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             (route) => false);
       } catch (e) {
         Navigator.of(context).pop();
-        print(e.toString());
-        if (e == 400)
-          _error = 'E-mail Already Exist';
-        else if (e == 401)
-          _error = 'Permisson to data Denied';
-        else
-          _error = 'Something went Wrong please try again later';
+        Map m = json.decode(e.toString());
+        _error = '${m['error']['message']}';
       } finally {
         if (mounted) setState(() {});
       }

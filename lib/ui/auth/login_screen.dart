@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:elrizk_task/models/user_model.dart';
 import 'package:elrizk_task/ui/about_app.dart';
 import 'package:elrizk_task/ui/auth/register_screen.dart';
@@ -30,10 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
             (route) => false);
       } catch (e) {
         Navigator.of(context).pop();
-        if (e == 400)
-          _error = 'Wrong E-mail or Password';
-        else
-          _error = 'Something went Wrong please try again later';
+        Map m = json.decode(e.toString());
+        _error = '${m['error']['message']}';
       } finally {
         if (mounted) setState(() {});
       }

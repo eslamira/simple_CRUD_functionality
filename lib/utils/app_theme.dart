@@ -111,6 +111,11 @@ class AppTheme {
       hintStyle: TextStyle(
         color: Colors.deepPurple[100],
       ),
+      focusedBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      enabledBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      labelStyle: TextStyle(color: Colors.white),
       errorStyle: TextStyle(
         color: Colors.red,
         fontSize: 12,

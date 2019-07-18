@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   String token;
   String refreshToken;
   int tokenExpiresIn;

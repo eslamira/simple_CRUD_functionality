@@ -1,4 +1,5 @@
 import 'package:elrizk_task/ui/splash_screen.dart';
+import 'package:elrizk_task/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -8,9 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Elrizk company',
-      theme: ThemeData(
-        primarySwatch: Colors.black,
-      ),
+      theme: AppTheme().mainTheme,
       home: SplashScreen(),
     );
   }

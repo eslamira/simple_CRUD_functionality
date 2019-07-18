@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _initData();
-  }
-
-  _initData() async {}
-
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Hi, Welcome to my App',
+          style: Theme.of(context).textTheme.display1,
+        ),
+      ),
+    );
   }
 }

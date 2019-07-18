@@ -20,7 +20,7 @@ class AboutApp extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                'Hi Welcome to my simple app\n\n\n'
+                'Hi and Welcome to my very simple app\n\n\n'
                 'This is a simple app provides a simple CRUD functions using firebase RESTful API.'
                 '\n\nThis App is just a prove of concept.'
                 '\n\nFeel free to check and try everything in it.',

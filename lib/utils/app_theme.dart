@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class AppTheme {
   ThemeData mainTheme = ThemeData(
     primaryColor: Colors.deepPurple,
-    accentColor: Colors.deepPurpleAccent,
+    accentColor: Colors.deepPurple[700],
     unselectedWidgetColor: Colors.deepPurple[100],
     scaffoldBackgroundColor: Colors.deepPurpleAccent,
-    indicatorColor: Colors.deepPurple[400],
+    indicatorColor: Colors.deepPurple,
     textTheme: TextTheme(
       title: TextStyle(
         color: Colors.white,
@@ -15,7 +15,7 @@ class AppTheme {
       ),
       subtitle: TextStyle(
         color: Colors.white,
-        fontSize: 16,
+        fontSize: 22,
       ),
       subhead: TextStyle(
         color: Colors.black,
@@ -151,6 +151,6 @@ class AppTheme {
     buttonColor: Colors.deepPurple[700],
 
     //-- Splash Color ex: in InkWell --//
-    splashColor: Colors.deepPurpleAccent,
+    splashColor: Colors.deepPurple,
   );
 }

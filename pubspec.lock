@@ -147,7 +147,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "597945356f3c9e6b229aea45a68c048fc7ceaf83"
+      resolved-ref: "111f1224fa16a517f7f25740a54b3d1d1a8917fc"
       url: "https://github.com/TinyProgrammers/tiny_widgets.git"
     source: git
     version: "0.0.2"

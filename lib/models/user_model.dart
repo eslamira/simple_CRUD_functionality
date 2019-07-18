@@ -1,4 +1,4 @@
-class UserModel {
+class FirebaseUser {
   /// A Firebase Auth ID token for the authenticated user.
   String token;
 
@@ -13,4 +13,39 @@ class UserModel {
 
   /// The email for the authenticated user.
   String email;
+
+  FirebaseUser.parser(Map user) {
+    token = user['idToken'];
+    refreshToken = user['refreshToken'];
+    tokenExpiresIn = int.parse(user['expiresIn']);
+    email = user['email'];
+    uid = user['localId'];
+  }
 }
+
+class UserModel {
+  FirebaseUser firebaseUser;
+  UserType userType;
+  String name;
+  String phoneNum;
+  String logoURL;
+  String locationURL;
+
+  UserModel.parser(this.firebaseUser, Map user) {
+    userType = userTypeFromString(user['userType']);
+    name = user['name'];
+    if (userType == UserType.User) phoneNum = user['phone'];
+    if (userType == UserType.Company) {
+      logoURL = user['logo'];
+      locationURL = user['location'];
+    }
+  }
+}
+
+enum UserType {
+  Company,
+  User,
+}
+
+UserType userTypeFromString(String text) =>
+    UserType.values.firstWhere((e) => e.toString() == "$text");

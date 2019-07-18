@@ -64,7 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               children: <Widget>[
                 Padding(
                   padding:
-                      const EdgeInsets.only(top: 24.0, bottom: 24.0, left: 8.0),
+                      const EdgeInsets.only(top: 36.0, bottom: 24.0, left: 8.0),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Row(

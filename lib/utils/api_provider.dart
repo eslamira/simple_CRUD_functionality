@@ -129,7 +129,6 @@ class ApiProvider {
     );
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      print(response.body);
     } else {
       throw response.statusCode;
     }
@@ -166,6 +165,8 @@ class ApiProvider {
     http.Response response = await http.patch(
         'https://$projectId.firebaseio.com/users/${user.uid}.json',
         body: data);
+
+    print(response.body);
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       return UserModel.parser(user, json.decode(response.body));

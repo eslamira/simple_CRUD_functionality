@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class FirebaseUser {
   /// A Firebase Auth ID token for the authenticated user.
   String token;
@@ -39,6 +41,21 @@ class UserModel {
       logoURL = user['logo'];
       locationURL = user['location'];
     }
+  }
+
+  toJson() {
+    return userType == UserType.User
+        ? json.encode({
+            "name": "$name",
+            "phone": "$phoneNum",
+            "userType": "$userType",
+          })
+        : json.encode({
+            "name": "$name",
+            "logo": "$logoURL",
+            "location": "$locationURL",
+            "userType": "$userType",
+          });
   }
 }
 

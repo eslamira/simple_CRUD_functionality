@@ -52,10 +52,10 @@ class _ChangePasswordState extends State<ChangePassword> {
           _error = 'Session expired log in again';
           Timer(
               Duration(seconds: 3),
-                  () => Navigator.of(context).pushAndRemoveUntil(
+              () => Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
                       builder: (BuildContext context) => LoginScreen()),
-                      (route) => false));
+                  (route) => false));
         } else
           _error = '${m['error']['message']}';
         if (mounted) setState(() {});

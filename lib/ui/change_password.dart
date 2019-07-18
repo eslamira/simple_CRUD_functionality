@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:elrizk_task/models/user_model.dart';
 import 'package:elrizk_task/ui/auth/login_screen.dart';
 import 'package:elrizk_task/utils/api_provider.dart';
@@ -44,10 +47,17 @@ class _ChangePasswordState extends State<ChangePassword> {
           Navigator.of(context).pop();
         }
       } catch (e) {
-        if (e == 400)
-          _error = 'INVALID PASSWORD';
-        else
-          _error = '${e.toString()}';
+        Map m = json.decode(e.toString());
+        if (m['error']['message'] == 'TOKEN_EXPIRED') {
+          _error = 'Session expired log in again';
+          Timer(
+              Duration(seconds: 3),
+                  () => Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen()),
+                      (route) => false));
+        } else
+          _error = '${m['error']['message']}';
         if (mounted) setState(() {});
         Navigator.of(context).pop();
       }

@@ -70,7 +70,7 @@ class ApiProvider {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return FirebaseUser.parser(json.decode(response.body));
     } else {
-      throw response.statusCode;
+      throw response.body;
     }
   }
 
@@ -108,7 +108,7 @@ class ApiProvider {
 
     if (response.statusCode == 200 || response.statusCode == 201) {
     } else {
-      throw response.statusCode;
+      throw response.body;
     }
   }
 

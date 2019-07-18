@@ -3,6 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiProvider {
+  /// making singleton
+  static ApiProvider _instance = ApiProvider.internal();
+  ApiProvider.internal();
+  factory ApiProvider() => _instance;
+
   /// the WebAPI key for the firebase project
   static const String _apiKey = 'AIzaSyDnJVWS59nBVsa4AOjkXUftFkhSej6ALko';
 
@@ -30,7 +35,6 @@ class ApiProvider {
     if (response.statusCode == 200 || response.statusCode == 201) {
       print(response.body);
     } else {
-      print(response.body);
       throw response.statusCode;
     }
   }
@@ -51,9 +55,8 @@ class ApiProvider {
 
     print(response.statusCode);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      return;
-    } else {
       print(response.body);
+    } else {
       throw response.statusCode;
     }
   }

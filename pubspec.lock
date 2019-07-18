@@ -142,6 +142,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.4"
+  tiny_widgets:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "597945356f3c9e6b229aea45a68c048fc7ceaf83"
+      url: "https://github.com/TinyProgrammers/tiny_widgets.git"
+    source: git
+    version: "0.0.2"
   typed_data:
     dependency: transitive
     description:
@@ -157,4 +166,4 @@ packages:
     source: hosted
     version: "2.0.8"
 sdks:
-  dart: ">=2.2.0 <3.0.0"
+  dart: ">=2.2.2 <3.0.0"

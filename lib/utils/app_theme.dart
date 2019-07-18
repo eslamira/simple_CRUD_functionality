@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   ThemeData mainTheme = ThemeData(
-    primaryColor: Colors.black,
-    accentColor: Colors.redAccent,
-    unselectedWidgetColor: Color(0xFFEDC7B6),
-    scaffoldBackgroundColor: Colors.black,
-    indicatorColor: Color(0xFFF76D6D),
-    backgroundColor: Colors.black,
+    primaryColor: Colors.deepPurple,
+    accentColor: Colors.deepPurpleAccent,
+    unselectedWidgetColor: Colors.deepPurple[100],
+    scaffoldBackgroundColor: Colors.deepPurpleAccent,
+    indicatorColor: Colors.deepPurple[400],
     textTheme: TextTheme(
       title: TextStyle(
         color: Colors.white,
@@ -19,10 +18,10 @@ class AppTheme {
         fontSize: 16,
       ),
       subhead: TextStyle(
-        color: Color(0xFFDA483F),
+        color: Colors.black,
       ),
       button: TextStyle(
-        color: Color(0xFFDA483F),
+        color: Colors.white,
       ),
       overline: TextStyle(
         color: Color(0xFF515C6F),
@@ -61,13 +60,13 @@ class AppTheme {
         fontWeight: FontWeight.w300,
       ),
       body2: TextStyle(
-        color: Color(0xFFF64C4C),
+        color: Colors.deepPurple,
         fontSize: 16,
         fontFamily: "Arial",
         fontWeight: FontWeight.w300,
       ),
       headline: TextStyle(
-        color: Color(0xFFF76D6D),
+        color: Colors.deepPurple[400],
         fontSize: 16,
         fontWeight: FontWeight.w300,
       ),
@@ -75,7 +74,7 @@ class AppTheme {
 
     // --- Theming App Bars --- //
     appBarTheme: AppBarTheme(
-      color: Color(0xFFF64C4C), // background color for app bar
+      color: Colors.deepPurple, // background color for app bar
       brightness: Brightness.dark, // this controls the status bar text color
 
       // --- Theming Texts in Appbar ex: Title --- //
@@ -110,11 +109,11 @@ class AppTheme {
       ),
       border: InputBorder.none,
       hintStyle: TextStyle(
-        color: Color(0xFFEDC7B6),
+        color: Colors.deepPurple[100],
       ),
       errorStyle: TextStyle(
         color: Colors.red,
-        fontSize: 18,
+        fontSize: 12,
       ),
     ),
 
@@ -127,16 +126,16 @@ class AppTheme {
       ),
       display1: TextStyle(
         fontFamily: 'Ariel',
-        color: Color(0xFF434343),
+        color: Colors.white,
         fontSize: 16,
       ),
       display2: TextStyle(
-        color: Color(0xFFF64C4C),
+        color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
       display3: TextStyle(
-        color: Color(0xFFF64C4C),
+        color: Colors.white,
         decoration: TextDecoration.lineThrough,
         fontSize: 16,
       ),
@@ -147,13 +146,11 @@ class AppTheme {
         fontWeight: FontWeight.w300,
       ),
     ),
-    // -- Divider -- //
-    dividerColor: Color(0xFFF76D6D),
 
     //-- Buttons --//
-    buttonColor: Color(0xFFF76D6D),
+    buttonColor: Colors.deepPurple[700],
 
     //-- Splash Color ex: in InkWell --//
-    splashColor: Color(0xFFF76D6D),
+    splashColor: Colors.deepPurpleAccent,
   );
 }

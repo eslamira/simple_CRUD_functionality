@@ -5,6 +5,8 @@ This app provides simple CRUD functionality in flutter as a prove of concept usi
 you can Register as a regular User or as a company
     both have a little bit different parameters and ui.
 
+    Note: Password must contains Numbers, small and capital Letters.
+
 After Registering you can log in you'll be able to view your profile edit it change you password and
 remove your account.
 

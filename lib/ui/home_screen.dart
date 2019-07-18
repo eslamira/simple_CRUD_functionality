@@ -1,4 +1,5 @@
 import 'package:elrizk_task/models/user_model.dart';
+import 'package:elrizk_task/ui/profile_screen.dart';
 import 'package:elrizk_task/utils/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
@@ -40,24 +41,74 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _isLoading
           ? TinyLoading()
           : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      'Hi ${_userModel.name}',
-                      textScaleFactor: 1.0,
-                      style: Theme.of(context).textTheme.subtitle,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 48.0),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: InkWell(
+                            onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        ProfileScreen(widget.user, _userModel),
+                                  ),
+                                ),
+                            child: Container(
+                              padding: EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(16.0)),
+                              child: Text(
+                                _userModel.userType == UserType.Company
+                                    ? 'Company'
+                                    : 'Client',
+                                textScaleFactor: 1.0,
+                                style: Theme.of(context).textTheme.display3,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  if (_error != null) ...[
-                    Text(
-                      _error,
-                      textScaleFactor: 1.0,
-                      style: Theme.of(context).inputDecorationTheme.errorStyle,
+                    if (_userModel.userType == UserType.Company) ...[
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage('${_userModel.logoURL}')),
+                          ),
+                        ),
+                      ),
+                    ],
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        child: Text(
+                          'Welcome ${_userModel.name}',
+                          textScaleFactor: 1.0,
+                          style: Theme.of(context).textTheme.subtitle,
+                        ),
+                      ),
                     ),
+                    if (_error != null) ...[
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          _error,
+                          textScaleFactor: 1.0,
+                          style:
+                              Theme.of(context).inputDecorationTheme.errorStyle,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
     );

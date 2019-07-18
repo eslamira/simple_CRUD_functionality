@@ -391,6 +391,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   flex: 4,
                                   child: TextFormField(
                                     controller: _logo,
+                                    validator:
+                                        TinyValidators.internal().urlValidator,
                                     decoration: InputDecoration(
                                         labelText: 'Logo URL',
                                         border: UnderlineInputBorder(
@@ -432,6 +434,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   flex: 4,
                                   child: TextFormField(
                                     controller: _location,
+                                    validator:
+                                        TinyValidators.internal().urlValidator,
                                     decoration: InputDecoration(
                                         labelText: 'Location Link',
                                         border: UnderlineInputBorder(

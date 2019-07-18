@@ -28,6 +28,9 @@ class ApiProvider {
   /// DeleteAccount EndPoint
   static const String deleteAccountEndPoint = 'deleteAccount?key=$_apiKey';
 
+  /// ChangeEmail EndPoint
+  static const String changeMailPassEndPoint = 'setAccountInfo?key=$_apiKey';
+
   /// Register method to register using e-mail and pass
   /// returns a [FirebaseUser] if successful
   Future<FirebaseUser> registerWithEmailAndPass(
@@ -71,13 +74,56 @@ class ApiProvider {
     }
   }
 
-  /// method to delete the user
+  /// Update user's e-mail
+  /// returns a [FirebaseUser] if successful
+  Future<FirebaseUser> updateUserEmail(String token, String email) async {
+    var data = json.encode({
+      "idToken": "$token",
+      "email": "$email",
+      "returnSecureToken": true,
+    });
+    http.Response response = await http.post(
+      "$authApiBase$changeMailPassEndPoint",
+      headers: {"Content-Type": "application/json"},
+      body: data,
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return FirebaseUser.parser(json.decode(response.body));
+    } else {
+      throw response.statusCode;
+    }
+  }
+
+  /// Update user's password
+  /// returns a [FirebaseUser] if successful
+  Future<FirebaseUser> updateUserPass(String token, String pass) async {
+    var data = json.encode({
+      "idToken": "$token",
+      "password": "$pass",
+      "returnSecureToken": true,
+    });
+    http.Response response = await http.post(
+      "$authApiBase$changeMailPassEndPoint",
+      headers: {"Content-Type": "application/json"},
+      body: data,
+    );
+
+    print(response.body);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return FirebaseUser.parser(json.decode(response.body));
+    } else {
+      throw response.statusCode;
+    }
+  }
+
+  /// method to delete the user from fb auth
   Future<void> deleteUser(String token) async {
     var data = json.encode({
       "idToken": "$token",
     });
     http.Response response = await http.post(
-      "$authApiBase$registerEndPoint",
+      "$authApiBase$deleteAccountEndPoint",
       headers: {"Content-Type": "application/json"},
       body: data,
     );
@@ -109,6 +155,31 @@ class ApiProvider {
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       return UserModel.parser(user, json.decode(response.body));
+    } else {
+      throw response.statusCode;
+    }
+  }
+
+  /// getting User's data from the RealTime DB
+  /// returns a [UserModel] if successful
+  Future<UserModel> updateUserData(FirebaseUser user, data) async {
+    http.Response response = await http.patch(
+        'https://$projectId.firebaseio.com/users/${user.uid}.json',
+        body: data);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return UserModel.parser(user, json.decode(response.body));
+    } else {
+      throw response.statusCode;
+    }
+  }
+
+  /// delete User's data from the RealTime DB
+  Future<void> deleteUserData(String uid) async {
+    http.Response response =
+        await http.delete('https://$projectId.firebaseio.com/users/$uid.json');
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
     } else {
       throw response.statusCode;
     }

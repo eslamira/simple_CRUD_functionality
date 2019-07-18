@@ -1,16 +1,13 @@
-# elrizk_task
+# Simple CRUD functionality App
 
-Elrizk company task
+This app provides simple CRUD functionality in flutter as a prove of concept using Firebase REST Api
 
-## Getting Started
+you can Register as a regular User or as a company
+    both have a little bit different parameters and ui.
 
-This project is a starting point for a Flutter application.
+After Registering you can log in you'll be able to view your profile edit it change you password and
+remove your account.
 
-A few resources to get you started if this is your first Flutter project:
+you can go to your profile by Clicking on [User] or [Company] at the TopLeft corner of the home page.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+This is a very Simple app with very simple UI, feel free to play through it as much as you like.

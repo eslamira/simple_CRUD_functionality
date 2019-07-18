@@ -1,4 +1,5 @@
 import 'package:elrizk_task/models/user_model.dart';
+import 'package:elrizk_task/ui/auth/login_screen.dart';
 import 'package:elrizk_task/ui/profile_screen.dart';
 import 'package:elrizk_task/utils/api_provider.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       Expanded(
                         flex: 1,
                         child: Container(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          height: MediaQuery.of(context).size.width * 0.25,
                           decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[400],
+                                  spreadRadius: 2.0,
+                                  blurRadius: 2.0)
+                            ],
                             image: DecorationImage(
                                 image: NetworkImage('${_userModel.logoURL}')),
                           ),
@@ -90,10 +100,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       flex: 3,
                       child: Container(
                         child: Text(
-                          'Welcome ${_userModel.name}',
+                          'Hi, \nWelcome ${_userModel.name}'
+                          '\n\n\nYou can view and edit your profile from the button Above.',
                           textScaleFactor: 1.0,
+                          textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.subtitle,
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TinyContainer(
+                        maxWidth: MediaQuery.of(context).size.width * 0.35,
+                        onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    LoginScreen()),
+                            (route) => false),
+                        text: 'LogOut',
+                        backgroundColor: Colors.deepPurple,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     if (_error != null) ...[

@@ -132,6 +132,7 @@ class _EditProfileState extends State<EditProfile> {
                           child: TextFormField(
                             initialValue: widget.userModel.name,
                             onSaved: (v) => widget.userModel.name = v,
+                            validator: TinyValidators.internal().nameValidator,
                             decoration: InputDecoration(
                               labelText: 'Name',
                               border: UnderlineInputBorder(
@@ -174,6 +175,7 @@ class _EditProfileState extends State<EditProfile> {
                           child: TextFormField(
                             initialValue: widget.user.email,
                             onSaved: (v) => widget.user.email = v,
+                            validator: TinyValidators.internal().emailValidator,
                             decoration: InputDecoration(
                               labelText: 'E-mail',
                               border: UnderlineInputBorder(
@@ -217,6 +219,8 @@ class _EditProfileState extends State<EditProfile> {
                             child: TextFormField(
                               initialValue: widget.userModel.phoneNum,
                               onSaved: (v) => widget.userModel.phoneNum = v,
+                              validator:
+                                  TinyValidators.internal().phoneValidator,
                               decoration: InputDecoration(
                                 labelText: 'Phone',
                                 border: UnderlineInputBorder(
@@ -253,7 +257,7 @@ class _EditProfileState extends State<EditProfile> {
                           Expanded(
                             flex: 1,
                             child: Icon(
-                              Icons.phone_android,
+                              Icons.link,
                               color: Colors.white,
                             ),
                           ),
@@ -262,6 +266,7 @@ class _EditProfileState extends State<EditProfile> {
                             child: TextFormField(
                               initialValue: widget.userModel.logoURL,
                               onSaved: (v) => widget.userModel.logoURL = v,
+                              validator: TinyValidators.internal().urlValidator,
                               decoration: InputDecoration(
                                 labelText: 'Logo URL',
                                 border: UnderlineInputBorder(
@@ -296,7 +301,7 @@ class _EditProfileState extends State<EditProfile> {
                           Expanded(
                             flex: 1,
                             child: Icon(
-                              Icons.phone_android,
+                              Icons.link,
                               color: Colors.white,
                             ),
                           ),
@@ -305,6 +310,7 @@ class _EditProfileState extends State<EditProfile> {
                             child: TextFormField(
                               initialValue: widget.userModel.locationURL,
                               onSaved: (v) => widget.userModel.locationURL = v,
+                              validator: TinyValidators.internal().urlValidator,
                               decoration: InputDecoration(
                                 labelText: 'Location URL',
                                 border: UnderlineInputBorder(
